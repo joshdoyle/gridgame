@@ -3,10 +3,10 @@ class Game {
 		this.numRows = 15
 		this.numCols = 15
 		this.pasture = this.makePasture()
-		this.addFence()
-		this.addGates()
+		// this.addFence()
+		// this.addGates()
 		this.addChickapigs()
-		this.addHayBales()
+		// this.addHayBales()
 	}
 
 	// Getter
@@ -21,7 +21,6 @@ class Game {
 				squares[r].push(square)
 			}
 		}
-		//console.log(squares)
 		return squares
 	}
 
@@ -131,88 +130,72 @@ class Game {
 	}
 
 	addChickapigs(){
-		const greenChickaPigs = [
-			[],					 		// row 0
-			[2, 4, 6, 9, 11, 13],		// row 1
-			[],							// row 2
-			[],							// row 3												
-			[],							// row 4
-			[],							// row 5
-			[],							// row 6
-			[],							// row 7
-			[],							// row 8
-			[],							// row 9
-			[],							// row 10
-			[],							// row 11
-			[],							// row 12
-			[],							// row 13
-			[],							// row 14
-			[]							// row 15	
+		const greenChickapigs = []
+		const yellowChickapigs = []
+		const redChickapigs = []
+		const blueChickapigs = []
+
+		const greenChickapigsStartPos = [
+			[1, 2],
+			[1, 4],
+			[1, 6],
+			[1,	9],
+			[1, 11],
+			[1, 13]
 		]
 
-		const yellowChickaPigs = [
-			[],					 		// row 0
-			[],							// row 1
-			[14],						// row 2
-			[],							// row 3												
-			[14],						// row 4
-			[],							// row 5
-			[14],						// row 6
-			[],							// row 7
-			[],							// row 8
-			[14],						// row 9
-			[],							// row 10
-			[14],						// row 11
-			[],							// row 12
-			[14],						// row 13
-			[],							// row 14
-			[]							// row 15	
+		const yellowChickapigsStartPos = [
+			[2, 14],
+			[4, 14],
+			[6, 14],
+			[9,	14],
+			[11, 14],
+			[13, 14]
 		]
 
-		const redChickaPigs = [
-			[], 						// row 0
-			[],							// row 1
-			[],							// row 2
-			[],							// row 3												
-			[],							// row 4
-			[],							// row 5
-			[],							// row 6
-			[],							// row 7
-			[],							// row 8
-			[],							// row 9
-			[],							// row 10
-			[],							// row 11
-			[],							// row 12
-			[],							// row 13
-			[2, 4, 6, 9, 11, 13],		// row 14
-			[]							// row 15	
+		const redChickapigsStartPos = [
+			[14, 2],
+			[14, 4],
+			[14, 6],
+			[14, 9],
+			[14, 11],
+			[14, 13]
 		]
 
-		const blueChickaPigs = [
-			[],					 		// row 0
-			[],							// row 1
-			[1],						// row 2
-			[],							// row 3												
-			[],							// row 4
-			[],							// row 5
-			[1],						// row 6
-			[],							// row 7
-			[],							// row 8
-			[1],						// row 9
-			[],							// row 10
-			[1],						// row 11
-			[],							// row 12
-			[1],						// row 13
-			[],							// row 14
-			[]							// row 15	
+		const blueChickapigsStartPos = [
+			[2, 1],
+			[4, 1],
+			[6, 1],
+			[9,	1],
+			[11, 1],
+			[13, 1]
 		]
 
-		this.addTokensToPasture(greenChickaPigs,'grP')
-		this.addTokensToPasture(yellowChickaPigs,'yP')
-		this.addTokensToPasture(redChickaPigs,'rP')
-		this.addTokensToPasture(blueChickaPigs,'bP')
+		greenChickapigsStartPos.forEach(loc => {
+			let pig = new Chickapig(loc[0], loc[1], 'green', 'gP')
+			this.addToPasture(pig)
+			greenChickapigs.push(pig)
+		})
+
+		yellowChickapigsStartPos.forEach(loc => {
+			let pig = new Chickapig(loc[0], loc[1], 'yellow', 'yP')
+			this.addToPasture(pig)
+			yellowChickapigs.push(pig)
+		})
+
+		redChickapigsStartPos.forEach(loc => {
+			let pig = new Chickapig(loc[0], loc[1], 'yellow', 'rP')
+			this.addToPasture(pig)
+			redChickapigs.push(pig)
+		})
+
+		blueChickapigsStartPos.forEach(loc => {
+			let pig = new Chickapig(loc[0], loc[1], 'blue', 'bP')
+			this.addToPasture(pig)
+			blueChickapigs.push(pig)
+		})
 	}
-//2,6 2,9 11,6 11,9
+
 	addHayBales(){
 		const greenHayBales = [
 			[],					 		// row 0
@@ -296,13 +279,13 @@ class Game {
 		this.addTokensToPasture(blueHayBales,'bH')
 	}
 
-
-
+	addToPasture(token){
+		this.pasture[token.row][token.col].addOccupant(token)
+	}
 
 	addTokensToPasture(tokens, tokenType){
 		for(let r = 0; r <= tokens.length - 1; r++){
   			for(let c = 0; c<= tokens[r].length - 1 ; c++){
-  				console.log(r, tokens[r][c])
   				this.pasture[r][tokens[r][c]].addOccupant(tokenType)
   			}	
   		}
@@ -312,14 +295,14 @@ class Game {
 		console.log(this.pasture)
 
 		const gridGameboard = document.getElementById("game-board");
-  		// gridGameboard.style.setProperty('--grid-rows', this.numRows + 1);
-  		// gridGameboard.style.setProperty('--grid-cols', this.numCols + 1);
 
   		//todo: change to forEach
   		for(let r = 0; r <= this.numRows; r++){
   			for(let c = 0; c<= this.numCols; c++){
 	  			let gridCell  = document.createElement('div')
-	  			gridCell.innerText = this.pasture[r][c].occupant //this.cells[i].row + ", " + this.cells[i].col  			
+	  			if(this.pasture[r][c].occupied){
+	  				gridCell.innerText = this.pasture[r][c].occupant.debugId
+	  			}
 	  			gridGameboard.appendChild(gridCell).className = 'grid-cell'
   			}
 		}	
@@ -341,24 +324,27 @@ class Square {
 	}
 }
 
-// class Token {
-// 	constructor(row, col){
-// 		this.row = row
-// 		this.col = col
-// 	}
-// }
+class Token {
+	constructor(row, col, travellimited, directionLimited, type, team, debugId) {
+		this.row = row
+		this.col = col
+		this.travelLimited = travellimited
+		this.directionLimited = directionLimited
+		this.type = type
+		this.team = team
+		this.debugId = debugId
 
-// class Chickapig extends Token{
-// 	constructor(row, col){
-// 		super(row, col)
-// 		this.movable = true
-// 		movem
-// 	}
+	}
+}	
 
-// }
+class Chickapig extends Token{
+	constructor(row, col, team, debugId){
+		super(row, col, false, true, 'Chickapig', team, debugId)
+	}
+
+}
 
 
 const board = new Game()
 board.print()
-// console.log(board.pasture)
 
