@@ -229,61 +229,31 @@ class Game {
 		this.pasture[token.row][token.col].addOccupant(token)
 	}
 
+	removeFromPasture(row, col){
+		this.pasture[row][col].removeOccupant()
+	}
+
 	addTokensToPasture(tokens, tokenType){
 		for(let r = 0; r <= tokens.length - 1; r++){
   			for(let c = 0; c<= tokens[r].length - 1 ; c++){
   				this.pasture[r][tokens[r][c]].addOccupant(tokenType)
   			}	
   		}
-	}		
+	}	
 
-	move(token, dir){
+	moveDown(token){
 		let roomToMove = true
 		let r = token.row
 		let c = token.col
 		let moves = 0
 
-		let rowOffset = 0
-		let rowDirModifier = 0
-		let colOffset = 0
-		let colDirModifier = 0	
-
-		switch (dir) {
-			case 'U':
-				rowOffset = 1
-				rowDirModifier = -1
-				colOffset = 0
-				colDirModifier = 0
-				break;				
-			case 'D':
-				rowOffset = 1
-				rowDirModifier = 1
-				colOffset = 0
-				colDirModifier = 0
-				break;	
-			case 'L':
-				rowOffset = 0
-				rowDirModifier = 0
-				colOffset = 1
-				colDirModifier = -1
-				break;				
-			case 'R':
-				rowOffset = 0
-				rowDirModifier = 0
-				colOffset = 1
-				colDirModifier = 1
-				break;			
-			default: 
-				console.log('Invalid direction:', dir)
-		}
-
+		let rowOffset = 1
+		debugger
 		while(roomToMove){
-			// debugger
-			if(this.pasture[r + (rowOffset * rowDirModifier)][c + (colOffset * colDirModifier)].occupied === false){
+			if(this.pasture[r + rowOffset][c].occupied === false){
 				moves++
 				rowOffset++
-				colOffset++
-				if(token.occupant.travelLimited){
+				if(token.travelLimited){
 					roomToMove = false
 				}
 			} else {
@@ -291,18 +261,115 @@ class Game {
 			}
 		}
 		console.log('num of moves', moves)
+		console.log(token)
+
+		
+		token.updateLocation(r + moves, c)
+		this.addToPasture(token)
+		this.removeFromPasture(r, c)
+		this.print()
 	}	
+
+	moveUp(token){
+		let roomToMove = true
+		let r = token.row
+		let c = token.col
+		let moves = 0
+
+		let rowOffset = 1
+
+		while(roomToMove){
+			if(this.pasture[r - rowOffset][c].occupied === false){
+				moves++
+				rowOffset++
+				if(token.travelLimited){
+					roomToMove = false
+				}
+			} else {
+				roomToMove = false
+			}
+		}
+		console.log('num of moves', moves)
+		console.log(token)
+
+		
+		token.updateLocation(r - moves, c)
+		this.addToPasture(token)
+		this.removeFromPasture(r, c)
+		this.print()
+	}		
+
+	moveLeft(token){
+		let roomToMove = true
+		let r = token.row
+		let c = token.col
+		let moves = 0
+
+		let colOffset = 1
+
+		while(roomToMove){
+			if(this.pasture[r][c - colOffset].occupied === false){
+				moves++
+				colOffset++
+				if(token.travelLimited){
+					roomToMove = false
+				}
+			} else {
+				roomToMove = false
+			}
+		}
+		console.log('num of moves', moves)
+		console.log(token)
+
+		
+		token.updateLocation(r, c - moves)
+		this.addToPasture(token)
+		this.removeFromPasture(r, c)
+		this.print()
+	}	
+
+	moveRight(token){
+		let roomToMove = true
+		let r = token.row
+		let c = token.col
+		let moves = 0
+
+		let colOffset = 1
+
+		while(roomToMove){
+			if(this.pasture[r][c + colOffset].occupied === false){
+				moves++
+				colOffset++
+				if(token.travelLimited){
+					roomToMove = false
+				}
+			} else {
+				roomToMove = false
+			}
+		}
+		console.log('num of moves', moves)
+		console.log(token)
+
+		
+		token.updateLocation(r, c + moves)
+		this.addToPasture(token)
+		this.removeFromPasture(r, c)
+		this.print()
+	}		
 
 	print(){
 		console.log(this.pasture)
 
 		const gridGameboard = document.getElementById("game-board");
 
+		gridGameboard.innerHTML = ''
+
   		//todo: change to forEach
   		for(let r = 0; r <= this.numRows; r++){
   			for(let c = 0; c<= this.numCols; c++){
 	  			let gridCell  = document.createElement('div')
 	  			if(this.pasture[r][c].occupied){
+	  				debugger
 	  				gridCell.innerText = this.pasture[r][c].occupant.debugId
 	  			}
 	  			gridGameboard.appendChild(gridCell).className = 'grid-cell'
@@ -324,6 +391,11 @@ class Square {
 		this.occupant = token
 		this.occupied = true
 	}
+
+	removeOccupant(){
+		this.occupant = null
+		this.occupied = false
+	}
 }
 
 class Token {
@@ -337,7 +409,8 @@ class Token {
 		this.debugId = debugId
 	}
 	updateLocation(r, c){
-
+		this.row = r
+		this.col = c
 	}
 }	
 
