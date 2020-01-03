@@ -171,7 +171,7 @@ class Game {
 		const yellowHayBales = []
 		const redHayBales = []
 		const blueHayBales = []
-		
+
 		const greenHayBalesStartPos = [
 			[2, 6],
 			[2, 9],
@@ -235,6 +235,62 @@ class Game {
   				this.pasture[r][tokens[r][c]].addOccupant(tokenType)
   			}	
   		}
+	}		
+
+	move(token, dir){
+		let roomToMove = true
+		let r = token.row
+		let c = token.col
+		let moves = 0
+
+		let rowOffset = 0
+		let rowDirModifier = 0
+		let colOffset = 0
+		let colDirModifier = 0	
+
+		switch (dir) {
+			case 'U':
+				rowOffset = 1
+				rowDirModifier = -1
+				colOffset = 0
+				colDirModifier = 0
+				break;				
+			case 'D':
+				rowOffset = 1
+				rowDirModifier = 1
+				colOffset = 0
+				colDirModifier = 0
+				break;	
+			case 'L':
+				rowOffset = 0
+				rowDirModifier = 0
+				colOffset = 1
+				colDirModifier = -1
+				break;				
+			case 'R':
+				rowOffset = 0
+				rowDirModifier = 0
+				colOffset = 1
+				colDirModifier = 1
+				break;			
+			default: 
+				console.log('Invalid direction:', dir)
+		}
+
+		while(roomToMove){
+			// debugger
+			if(this.pasture[r + (rowOffset * rowDirModifier)][c + (colOffset * colDirModifier)].occupied === false){
+				moves++
+				rowOffset++
+				colOffset++
+				if(token.occupant.travelLimited){
+					roomToMove = false
+				}
+			} else {
+				roomToMove = false
+			}
+		}
+		console.log('num of moves', moves)
 	}	
 
 	print(){
@@ -279,6 +335,8 @@ class Token {
 		this.type = type
 		this.team = team
 		this.debugId = debugId
+	}
+	updateLocation(r, c){
 
 	}
 }	
