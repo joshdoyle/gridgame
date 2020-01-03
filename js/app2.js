@@ -1,5 +1,7 @@
 class Gameboard {
 	constructor() {
+		this.numRows = 15
+		this.numCols = 15
 		this.pasture = this.makePasture()
 	}
 
@@ -8,9 +10,9 @@ class Gameboard {
 	// Method
 	makePasture() {
 		const squares = []
-		for(let r = 0; r <= 15; r++) {
+		for(let r = 0; r <= this.numRows; r++) {
 			squares.push([])
-			for(let c = 0; c <= 15; c++) {
+			for(let c = 0; c <= this.numCols; c++) {
 				let square = new Square(r,c)
 				squares[r].push(square)
 			}
@@ -19,14 +21,26 @@ class Gameboard {
 		return squares
 	}	
 
-	addToken(r,c,t){
-		this.pasture[r][c].token = t
+	addToken(row,col,token){
+		this.pasture[row][col].token = token
 	}	
 
 	print(){
 		console.log(this.pasture)
-	}
 
+		const gridGameboard = document.getElementById("game-board");
+  		gridGameboard.style.setProperty('--grid-rows', this.numRows + 1);
+  		gridGameboard.style.setProperty('--grid-cols', this.numCols + 1);
+
+  		//todo: change to forEach
+  		for(let r = 0; r <= this.numRows; r++){
+  			for(let c = 0; c<= this.numCols; c++){
+	  			let gridCell  = document.createElement('div')
+	  			gridCell.innerText = this.pasture[r][c].occupant //this.cells[i].row + ", " + this.cells[i].col  			
+	  			gridGameboard.appendChild(gridCell).className = '.grid-cell'
+  			}
+		}	
+	}
 }
 
 
@@ -35,7 +49,7 @@ class Square {
 		this.row = row
 		this.col = col
 		this.occupied = false
-		this.occupant = ''
+		this.occupant = 'empty'
 
 	}
 }
