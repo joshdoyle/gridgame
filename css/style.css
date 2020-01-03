@@ -11,7 +11,7 @@
 }
 
 .grid-cell {
-/*  padding: 1em;*/
+  padding: 1em;
   border: 1px solid gray;
   text-align: center;
 }
