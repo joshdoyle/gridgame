@@ -3,10 +3,10 @@ class Game {
 		this.numRows = 15
 		this.numCols = 15
 		this.pasture = this.makePasture()
-		// this.addFence()
-		// this.addGates()
+		this.addFence()
+		this.addGates()
 		this.addChickapigs()
-		// this.addHayBales()
+		this.addHayBales()
 	}
 
 	// Getter
@@ -26,107 +26,77 @@ class Game {
 
 	addFence(){
 		const fences = [
-			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15], 	// row 0
-			[0,15],												// row 1
-			[0,15],												// row 2
-			[0,15],												// row 3												
-			[0,15],												// row 4
-			[0,15],												// row 5
-			[0,15],												// row 6
-			[],													// row 7
-			[],													// row 8
-			[0,15],												// row 9
-			[0,15],												// row 10
-			[0,15],												// row 11
-			[0,15],												// row 12
-			[0,15],												// row 13
-			[0,15],												// row 14
-			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15]	// row 15												
-		]
-
-			this.addTokensToPasture(fences, 'f')
+			[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 9], [0,10], [0,11], [0, 12], [0, 13], [0, 14], [0, 15],
+			[1, 0], [1, 15],
+			[2, 0], [2,15],		
+			[3, 0], [3,15],									
+			[4, 0], [4,15],																							
+			[5, 0], [5,15],												
+			[6, 0], [6,15],												
+			[9, 0], [9,15],																						
+			[10, 0], [10,15],												
+			[11, 0], [11,15],												
+			[12, 0], [12,15],												
+			[13, 0], [13,15],												
+			[14, 0], [14,15],												
+			[15, 0], [15, 1], [15, 2], [15, 3], [15, 4], [15, 5], [15, 6], [15, 9], [15, 10], [15, 11], [15, 12], [15, 13], [15, 14], [15, 15]													
+		]	
+			// this.addTokensToPasture(fences, 'f')
+			fences.forEach(loc => {
+			let fence = new Fence(loc[0], loc[1])
+			this.addToPasture(fence)
+		})
 	}	
 
 	addGates(){
-		const greenGates = [
-			[],		 	// row 0
-			[],			// row 1
-			[],			// row 2
-			[],			// row 3												
-			[],			// row 4
-			[],			// row 5
-			[],			// row 6
-			[],			// row 7
-			[],			// row 8
-			[],			// row 9
-			[],			// row 10
-			[],			// row 11
-			[],			// row 12
-			[],			// row 13
-			[],			// row 14
-			[7,8]		// row 15			
+		const greenGates = []
+		const yellowGates = []
+		const redGates = []
+		const blueGates = []
+
+		const greenGatesLoc = [
+			[15, 7],
+			[15, 8]
 		]
 
-		const yellowGates = [
-			[], 		// row 0
-			[],			// row 1
-			[],			// row 2
-			[],			// row 3												
-			[],			// row 4
-			[],			// row 5
-			[],			// row 6
-			[0],		// row 7
-			[0],		// row 8
-			[],			// row 9
-			[],			// row 10
-			[],			// row 11
-			[],			// row 12
-			[],			// row 13
-			[],			// row 14
-			[]			// row 15	
+		const yellowGatesLoc = [
+			[7, 0],
+			[8, 0]
 		]
 
-		const redGates = [
-			[7, 8], 	// row 0
-			[],			// row 1
-			[],			// row 2
-			[],			// row 3												
-			[],			// row 4
-			[],			// row 5
-			[],			// row 6
-			[],			// row 7
-			[],			// row 8
-			[],			// row 9
-			[],			// row 10
-			[],			// row 11
-			[],			// row 12
-			[],			// row 13
-			[],			// row 14
-			[]			// row 15			
+		const redGatesLoc = [
+			[0, 7],
+			[0, 8]
 		]
 
-		const blueGates = [
-			[], 		// row 0
-			[],			// row 1
-			[],			// row 2
-			[],			// row 3												
-			[],			// row 4
-			[],			// row 5
-			[],			// row 6
-			[15],		// row 7
-			[15],		// row 8
-			[],			// row 9
-			[],			// row 10
-			[],			// row 11
-			[],			// row 12
-			[],			// row 13
-			[],			// row 14
-			[]			// row 15	
-		]		
-		this.addTokensToPasture(greenGates,'grG')
-		this.addTokensToPasture(yellowGates,'yG')
-		this.addTokensToPasture(redGates,'rG')
-		this.addTokensToPasture(blueGates,'bG')						
+		const blueGatesLoc = [
+			[7, 15],
+			[8, 15]
+		]
+
+		greenGatesLoc.forEach(loc => {
+			let gate = new Gate(loc[0], loc[1], 'green', 'gG')
+			this.addToPasture(gate)
+			greenGates.push(gate)
+		})
+		
+		yellowGatesLoc.forEach(loc => {
+			let gate = new Gate(loc[0], loc[1], 'yellow', 'yG')
+			this.addToPasture(gate)
+			yellowGates.push(gate)
+		})
+		
+		redGatesLoc.forEach(loc => {
+			let gate = new Gate(loc[0], loc[1], 'red', 'rG')
+			this.addToPasture(gate)
+			redGates.push(gate)
+		})
+		
+		blueGatesLoc.forEach(loc => {
+			let gate = new Gate(loc[0], loc[1], 'blue', 'bG')
+			this.addToPasture(gate)
+			blueGates.push(gate)
+		})				
 	}
 
 	addChickapigs(){
@@ -197,86 +167,62 @@ class Game {
 	}
 
 	addHayBales(){
-		const greenHayBales = [
-			[],					 		// row 0
-			[],							// row 1
-			[6, 9],						// row 2
-			[],							// row 3												
-			[],							// row 4
-			[],							// row 5
-			[],							// row 6
-			[],							// row 7
-			[],							// row 8
-			[],							// row 9
-			[],							// row 10
-			[6,9],						// row 11
-			[],							// row 12
-			[],							// row 13
-			[],							// row 14
-			[]							// row 15	
+		const greenHayBales = []
+		const yellowHayBales = []
+		const redHayBales = []
+		const blueHayBales = []
+		
+		const greenHayBalesStartPos = [
+			[2, 6],
+			[2, 9],
+			[11, 6],
+			[11, 9]	
 		]
 
-		const yellowHayBales = [
-			[],					 		// row 0
-			[],							// row 1
-			[],							// row 2
-			[],							// row 3												
-			[],							// row 4
-			[],							// row 5
-			[4, 13],					// row 6
-			[],							// row 7
-			[],							// row 8
-			[4, 13],					// row 9
-			[],							// row 10
-			[],							// row 11
-			[],							// row 12
-			[],							// row 13
-			[],							// row 14
-			[]							// row 15	
+		const yellowHayBalesStartPos = [
+			[6, 4],
+			[6, 13],
+			[9, 4],
+			[9, 13]
 		]
 
-		const redHayBales = [
-			[], 						// row 0
-			[],							// row 1
-			[],							// row 2
-			[],							// row 3												
-			[6,9],						// row 4
-			[],							// row 5
-			[],							// row 6
-			[],							// row 7
-			[],							// row 8
-			[],							// row 9
-			[],							// row 10
-			[],							// row 11
-			[],							// row 12
-			[6,9],						// row 13
-			[],							// row 14
-			[]							// row 15	
+		const redHayBalesStartPos = [						
+			[4, 6],
+			[4 ,9],				
+			[13, 6],
+			[13, 9]						
 		]
 
-		const blueHayBales = [
-			[],					 		// row 0
-			[],							// row 1
-			[],							// row 2
-			[],							// row 3												
-			[],							// row 4
-			[],							// row 5
-			[2, 11],					// row 6
-			[],							// row 7
-			[],							// row 8
-			[2, 11],					// row 9
-			[],							// row 10
-			[],							// row 11
-			[],							// row 12
-			[],							// row 13
-			[],							// row 14
-			[]							// row 15	
+		const blueHayBalesStartPos = [
+			[6, 2],
+			[6, 11],
+			[9, 2],
+			[9, 11]
 		]
 
-		this.addTokensToPasture(greenHayBales,'grH')
-		this.addTokensToPasture(yellowHayBales,'yH')
-		this.addTokensToPasture(redHayBales,'rH')
-		this.addTokensToPasture(blueHayBales,'bH')
+		greenHayBalesStartPos.forEach(loc => {
+			let hay = new HayBale(loc[0], loc[1], 'green', 'gH')
+			this.addToPasture(hay)
+			greenHayBales.push(hay)
+		})
+
+		yellowHayBalesStartPos.forEach(loc => {
+			let hay = new HayBale(loc[0], loc[1], 'yellow', 'yH')
+			this.addToPasture(hay)
+			yellowHayBales.push(hay)
+		})
+
+		redHayBalesStartPos.forEach(loc => {
+			let hay = new HayBale(loc[0], loc[1], 'yellow', 'rH')
+			this.addToPasture(hay)
+			redHayBales.push(hay)
+		})
+
+		blueHayBalesStartPos.forEach(loc => {
+			let hay = new HayBale(loc[0], loc[1], 'blue', 'bH')
+			this.addToPasture(hay)
+			blueHayBales.push(hay)
+		})
 	}
 
 	addToPasture(token){
@@ -344,6 +290,23 @@ class Chickapig extends Token{
 
 }
 
+class Fence extends Token {
+	constructor(row, col){
+		super(row, col, true, true, 'Fence', null, 'f')
+	}
+}
+
+class Gate extends Token {
+	constructor(row, col, team, debugId){
+		super(row, col, true, true, 'Gate', team, debugId)
+	}
+}
+
+class HayBale extends Token {
+	constructor(row, col, team, debugId){
+		super(row, col, true, true, 'Hay', team, debugId)
+	}
+}
 
 const board = new Game()
 board.print()
