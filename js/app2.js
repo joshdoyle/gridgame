@@ -4,6 +4,7 @@ class Gameboard {
 		this.numCols = 15
 		this.pasture = this.makePasture()
 		this.addFence()
+		this.addGates()
 	}
 
 	// Getter
@@ -42,17 +43,41 @@ class Gameboard {
 			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15]	// row 16												
 		]
 
-		for(let r = 0; r <= fences.length - 1; r++){
-  			for(let c = 0; c<= fences[r].length - 1 ; c++){
-  				console.log(r, fences[r][c])
-  				this.pasture[r][fences[r][c]].addOccupant('fence')
+		this.addTokensToPasture(fences, 'fence')
+	}	
+
+	addGates(){
+		const gates = [
+			[7,8], 		// row 1
+			[],			// row 2
+			[],			// row 3
+			[],			// row 4												
+			[],			// row 5
+			[],			// row 6
+			[0, 15],	// row 7
+			[0, 15],	// row 8
+			[],			// row 9
+			[],			// row 10
+			[],			// row 11
+			[],			// row 12
+			[],			// row 13
+			[],			// row 14
+			[],			// row 15
+			[7,8]		// row 16	
+		]
+
+
+		this.addTokensToPasture(gates,'gate')
+	}
+
+	addTokensToPasture(tokens, tokenType){
+		for(let r = 0; r <= tokens.length - 1; r++){
+  			for(let c = 0; c<= tokens[r].length - 1 ; c++){
+  				console.log(r, tokens[r][c])
+  				this.pasture[r][tokens[r][c]].addOccupant(tokenType)
   			}	
   		}
 	}	
-
-	// addTokenToSquare(row,col,token){
-	// 	this.pasture[row][col].addOccupant(token)
-	// }	
 
 	print(){
 		console.log(this.pasture)
