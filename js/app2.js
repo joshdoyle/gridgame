@@ -25,10 +25,11 @@ class Game {
 
 	addFence(){
 		const fences = [
-			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15], 	// row 1
+			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15], 	// row 0
+			[0,15],												// row 1
 			[0,15],												// row 2
-			[0,15],												// row 3
-			[0,15],												// row 4												
+			[0,15],												// row 3												
+			[0,15],												// row 4
 			[0,15],												// row 5
 			[0,15],												// row 6
 			[],													// row 7
@@ -39,8 +40,7 @@ class Game {
 			[0,15],												// row 12
 			[0,15],												// row 13
 			[0,15],												// row 14
-			[0,15],												// row 15
-			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15]	// row 16												
+			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15]	// row 15												
 		]
 
 			this.addTokensToPasture(fences, 'f')
@@ -48,10 +48,11 @@ class Game {
 
 	addGates(){
 		const gates = [
-			[7,8], 		// row 1
+			[7,8], 		// row 0
+			[],			// row 1
 			[],			// row 2
-			[],			// row 3
-			[],			// row 4												
+			[],			// row 3												
+			[],			// row 4
 			[],			// row 5
 			[],			// row 6
 			[0, 15],	// row 7
@@ -62,8 +63,7 @@ class Game {
 			[],			// row 12
 			[],			// row 13
 			[],			// row 14
-			[],			// row 15
-			[7,8]		// row 16	
+			[7,8]		// row 15	
 		]
 		this.addTokensToPasture(gates,'g')
 	}
