@@ -5,6 +5,8 @@ class Game {
 		this.pasture = this.makePasture()
 		this.addFence()
 		this.addGates()
+		this.addChickapigs()
+		this.addHayBales()
 	}
 
 	// Getter
@@ -47,31 +49,255 @@ class Game {
 	}	
 
 	addGates(){
-		const gates = [
-			[7,8], 		// row 0
+		const greenGates = [
+			[],		 	// row 0
 			[],			// row 1
 			[],			// row 2
 			[],			// row 3												
 			[],			// row 4
 			[],			// row 5
 			[],			// row 6
-			[0, 15],	// row 7
-			[0, 15],	// row 8
+			[],			// row 7
+			[],			// row 8
 			[],			// row 9
 			[],			// row 10
 			[],			// row 11
 			[],			// row 12
 			[],			// row 13
 			[],			// row 14
-			[7,8]		// row 15	
+			[7,8]		// row 15			
 		]
-		this.addTokensToPasture(gates,'g')
+
+		const yellowGates = [
+			[], 		// row 0
+			[],			// row 1
+			[],			// row 2
+			[],			// row 3												
+			[],			// row 4
+			[],			// row 5
+			[],			// row 6
+			[0],		// row 7
+			[0],		// row 8
+			[],			// row 9
+			[],			// row 10
+			[],			// row 11
+			[],			// row 12
+			[],			// row 13
+			[],			// row 14
+			[]			// row 15	
+		]
+
+		const redGates = [
+			[7, 8], 	// row 0
+			[],			// row 1
+			[],			// row 2
+			[],			// row 3												
+			[],			// row 4
+			[],			// row 5
+			[],			// row 6
+			[],			// row 7
+			[],			// row 8
+			[],			// row 9
+			[],			// row 10
+			[],			// row 11
+			[],			// row 12
+			[],			// row 13
+			[],			// row 14
+			[]			// row 15			
+		]
+
+		const blueGates = [
+			[], 		// row 0
+			[],			// row 1
+			[],			// row 2
+			[],			// row 3												
+			[],			// row 4
+			[],			// row 5
+			[],			// row 6
+			[15],		// row 7
+			[15],		// row 8
+			[],			// row 9
+			[],			// row 10
+			[],			// row 11
+			[],			// row 12
+			[],			// row 13
+			[],			// row 14
+			[]			// row 15	
+		]		
+		this.addTokensToPasture(greenGates,'grG')
+		this.addTokensToPasture(yellowGates,'yG')
+		this.addTokensToPasture(redGates,'rG')
+		this.addTokensToPasture(blueGates,'bG')						
 	}
 
-	addPlayer1(){
+	addChickapigs(){
+		const greenChickaPigs = [
+			[],					 		// row 0
+			[2, 4, 6, 9, 11, 13],		// row 1
+			[],							// row 2
+			[],							// row 3												
+			[],							// row 4
+			[],							// row 5
+			[],							// row 6
+			[],							// row 7
+			[],							// row 8
+			[],							// row 9
+			[],							// row 10
+			[],							// row 11
+			[],							// row 12
+			[],							// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
 
+		const yellowChickaPigs = [
+			[],					 		// row 0
+			[],							// row 1
+			[14],						// row 2
+			[],							// row 3												
+			[14],						// row 4
+			[],							// row 5
+			[14],						// row 6
+			[],							// row 7
+			[],							// row 8
+			[14],						// row 9
+			[],							// row 10
+			[14],						// row 11
+			[],							// row 12
+			[14],						// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
 
+		const redChickaPigs = [
+			[], 						// row 0
+			[],							// row 1
+			[],							// row 2
+			[],							// row 3												
+			[],							// row 4
+			[],							// row 5
+			[],							// row 6
+			[],							// row 7
+			[],							// row 8
+			[],							// row 9
+			[],							// row 10
+			[],							// row 11
+			[],							// row 12
+			[],							// row 13
+			[2, 4, 6, 9, 11, 13],		// row 14
+			[]							// row 15	
+		]
+
+		const blueChickaPigs = [
+			[],					 		// row 0
+			[],							// row 1
+			[1],						// row 2
+			[],							// row 3												
+			[],							// row 4
+			[],							// row 5
+			[1],						// row 6
+			[],							// row 7
+			[],							// row 8
+			[1],						// row 9
+			[],							// row 10
+			[1],						// row 11
+			[],							// row 12
+			[1],						// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
+
+		this.addTokensToPasture(greenChickaPigs,'grP')
+		this.addTokensToPasture(yellowChickaPigs,'yP')
+		this.addTokensToPasture(redChickaPigs,'rP')
+		this.addTokensToPasture(blueChickaPigs,'bP')
 	}
+//2,6 2,9 11,6 11,9
+	addHayBales(){
+		const greenHayBales = [
+			[],					 		// row 0
+			[],							// row 1
+			[6, 9],						// row 2
+			[],							// row 3												
+			[],							// row 4
+			[],							// row 5
+			[],							// row 6
+			[],							// row 7
+			[],							// row 8
+			[],							// row 9
+			[],							// row 10
+			[6,9],						// row 11
+			[],							// row 12
+			[],							// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
+
+		const yellowHayBales = [
+			[],					 		// row 0
+			[],							// row 1
+			[],							// row 2
+			[],							// row 3												
+			[],							// row 4
+			[],							// row 5
+			[4, 13],					// row 6
+			[],							// row 7
+			[],							// row 8
+			[4, 13],					// row 9
+			[],							// row 10
+			[],							// row 11
+			[],							// row 12
+			[],							// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
+
+		const redHayBales = [
+			[], 						// row 0
+			[],							// row 1
+			[],							// row 2
+			[],							// row 3												
+			[6,9],						// row 4
+			[],							// row 5
+			[],							// row 6
+			[],							// row 7
+			[],							// row 8
+			[],							// row 9
+			[],							// row 10
+			[],							// row 11
+			[],							// row 12
+			[6,9],						// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
+
+		const blueHayBales = [
+			[],					 		// row 0
+			[],							// row 1
+			[],							// row 2
+			[],							// row 3												
+			[],							// row 4
+			[],							// row 5
+			[2, 11],					// row 6
+			[],							// row 7
+			[],							// row 8
+			[2, 11],					// row 9
+			[],							// row 10
+			[],							// row 11
+			[],							// row 12
+			[],							// row 13
+			[],							// row 14
+			[]							// row 15	
+		]
+
+		this.addTokensToPasture(greenHayBales,'grH')
+		this.addTokensToPasture(yellowHayBales,'yH')
+		this.addTokensToPasture(redHayBales,'rH')
+		this.addTokensToPasture(blueHayBales,'bH')
+	}
+
+
+
 
 	addTokensToPasture(tokens, tokenType){
 		for(let r = 0; r <= tokens.length - 1; r++){
@@ -114,6 +340,22 @@ class Square {
 		this.occupied = true
 	}
 }
+
+// class Token {
+// 	constructor(row, col){
+// 		this.row = row
+// 		this.col = col
+// 	}
+// }
+
+// class Chickapig extends Token{
+// 	constructor(row, col){
+// 		super(row, col)
+// 		this.movable = true
+// 		movem
+// 	}
+
+// }
 
 
 const board = new Game()
