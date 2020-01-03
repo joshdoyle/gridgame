@@ -70,7 +70,6 @@ class Gameboard {
 
 	makePasture() {
 		for(let r = 0; r <= this.numRows; r++) {
-			this.cells.push([])
 			for(let c = 0; c <= this.numCols; c++) {
 				const cell = new Cell(r,c)
 

@@ -1,4 +1,4 @@
-class Gameboard {
+class Game {
 	constructor() {
 		this.numRows = 15
 		this.numCols = 15
@@ -43,7 +43,7 @@ class Gameboard {
 			[0, 1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15]	// row 16												
 		]
 
-		this.addTokensToPasture(fences, 'fence')
+			this.addTokensToPasture(fences, 'f')
 	}	
 
 	addGates(){
@@ -65,9 +65,12 @@ class Gameboard {
 			[],			// row 15
 			[7,8]		// row 16	
 		]
+		this.addTokensToPasture(gates,'g')
+	}
+
+	addPlayer1(){
 
 
-		this.addTokensToPasture(gates,'gate')
 	}
 
 	addTokensToPasture(tokens, tokenType){
@@ -83,8 +86,8 @@ class Gameboard {
 		console.log(this.pasture)
 
 		const gridGameboard = document.getElementById("game-board");
-  		gridGameboard.style.setProperty('--grid-rows', this.numRows + 1);
-  		gridGameboard.style.setProperty('--grid-cols', this.numCols + 1);
+  		// gridGameboard.style.setProperty('--grid-rows', this.numRows + 1);
+  		// gridGameboard.style.setProperty('--grid-cols', this.numCols + 1);
 
   		//todo: change to forEach
   		for(let r = 0; r <= this.numRows; r++){
@@ -113,7 +116,7 @@ class Square {
 }
 
 
-const board = new Gameboard()
+const board = new Game()
 board.print()
 // console.log(board.pasture)
 
