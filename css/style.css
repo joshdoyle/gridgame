@@ -5,12 +5,98 @@
 
 #game-board {
   display: grid;
-  grid-template-rows: 20px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 20px;
-  grid-template-columns: 20px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 20px;
+  grid-template-rows: 15px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 15px;
+  grid-template-columns: 15px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 15px;
   justify-content: center;
 }
 
+
 .grid-cell {
   border: 1px solid gray;
-  text-align: center;
+  /*text-align: center;*/
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.green-pig {
+	background-color: green;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+}
+
+.green-hay-bale {
+  height: 80%;
+  width: 80%;
+  background: repeating-linear-gradient(
+    to right,
+    green,
+    green 5px,
+    LightGreen 5px,
+    LightGreen 10px)
+}
+
+.red-hay-bale {
+  height: 80%;
+  width: 80%;
+  background: repeating-linear-gradient(
+    to right,
+    red,
+    red 5px,
+    LightCoral 5px,
+    LightCoral 10px)
+}
+
+.yellow-hay-bale {
+  height: 80%;
+  width: 80%;
+  background: repeating-linear-gradient(
+    to right,
+    #ffe44d,
+    #ffe44d 5px,
+    GoldenRod 5px,
+    GoldenRod 10px)
+}
+
+.blue-hay-bale {
+  height: 80%;
+  width: 80%;
+  background: repeating-linear-gradient(
+    to right,
+    blue,
+    blue 5px,
+    LightSkyBlue  5px,
+    LightSkyBlue  10px)
+}
+
+.blue-pig {
+	background-color: blue;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+}
+
+.red-pig {
+	background-color: red;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;  
+}
+
+.yellow-pig {
+	background-color: #ffe44d;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;  
+}
+
+.fence {
+  background-color: brown;
+  height: 100%;
+  width: 100%;
+}
+
+.gate {
+
 }

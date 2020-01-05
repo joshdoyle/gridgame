@@ -356,23 +356,25 @@ class Game {
 		this.removeFromPasture(r, c)
 		this.print()
 	}		
-
+	// todo: change print to draw
+	// todo: change to jQuery
 	print(){
 		console.log(this.pasture)
 
-		const gridGameboard = document.getElementById("game-board");
+		//const gridGameboard = document.getElementById("game-board");
 
-		gridGameboard.innerHTML = ''
+		//gridGameboard.innerHTML = ''
+		$('#game-board').html('')
 
-  		//todo: change to forEach
   		for(let r = 0; r <= this.numRows; r++){
   			for(let c = 0; c<= this.numCols; c++){
-	  			let gridCell  = document.createElement('div')
+
+	  			let $gridCell = $(`<div class = "grid-cell"></div>`)
 	  			if(this.pasture[r][c].occupied){
-	  				debugger
-	  				gridCell.innerText = this.pasture[r][c].occupant.debugId
-	  			}
-	  			gridGameboard.appendChild(gridCell).className = 'grid-cell'
+	  				$gridCell.append(`<div>${this.pasture[r][c].occupant.debugId}</div>`)
+	  			} 
+
+	  			$('#game-board').append($gridCell)
   			}
 		}	
 	}
