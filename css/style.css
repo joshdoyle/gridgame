@@ -3,15 +3,38 @@
   --grid-rows: 1;
 }
 
+#tempA {
+  height: 30px;
+  width: 30px;
+  background-color: red;
+}
+
+#tempB {
+  height: 100px;
+  width: 100px;
+  background-color: gray;
+  position: relative;
+
+  top: 200px;
+}
+
 #game-board {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+    /* bring your own prefixes */
+  transform: translate(-50%, -50%);
   display: grid;
-  grid-template-rows: 15px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 15px;
-  grid-template-columns: 15px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 45px 15px;
+  height: 660px;
+  width: 660px;
+  grid-template-rows:  6% 1% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 1% 6%;
+  grid-template-columns: 6% 1% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 1% 6%;
   justify-content: center;
+  /*transform: rotate(45deg);  */
 }
 
 
-.grid-cell {
+.square {
   border: 1px solid gray;
   /*text-align: center;*/
   display: flex;
@@ -19,14 +42,14 @@
   align-items: center;
 }
 
-.green-pig {
+.green.pig {
 	background-color: green;
   height: 80%;
   width: 80%;
   border-radius: 50%;
 }
 
-.green-hay-bale {
+.green.hay-bale {
   height: 80%;
   width: 80%;
   background: repeating-linear-gradient(
@@ -37,7 +60,7 @@
     LightGreen 10px)
 }
 
-.red-hay-bale {
+.red.hay-bale {
   height: 80%;
   width: 80%;
   background: repeating-linear-gradient(
@@ -48,7 +71,7 @@
     LightCoral 10px)
 }
 
-.yellow-hay-bale {
+.yellow.hay-bale {
   height: 80%;
   width: 80%;
   background: repeating-linear-gradient(
@@ -59,7 +82,7 @@
     GoldenRod 10px)
 }
 
-.blue-hay-bale {
+.blue.hay-bale {
   height: 80%;
   width: 80%;
   background: repeating-linear-gradient(
@@ -70,21 +93,21 @@
     LightSkyBlue  10px)
 }
 
-.blue-pig {
+.blue.pig {
 	background-color: blue;
   height: 80%;
   width: 80%;
   border-radius: 50%;
 }
 
-.red-pig {
+.red.pig {
 	background-color: red;
   height: 80%;
   width: 80%;
   border-radius: 50%;  
 }
 
-.yellow-pig {
+.yellow.pig {
 	background-color: #ffe44d;
   height: 80%;
   width: 80%;
@@ -98,5 +121,22 @@
 }
 
 .gate {
+
+}
+
+
+.empty {
+
+}
+
+.freedom {
+
+}
+
+.beyond-fence {
+  border: 1px solid gray;
+}
+
+.score-area {
 
 }

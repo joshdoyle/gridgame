@@ -5,290 +5,377 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha256-rByPlHULObEjJ6XQxW/flG2r+22R5dKiAoef+aXWfik=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha256-KM512VNnjElC30ehFwehXjx1YCHPiQkOPmqnrWtpccM=" crossorigin="anonymous"></script>
 </head>
 <body>
 
+	<div id = "tempA"></div>
+	<div id = "tempB"></div>
 	<div id="game-board">
 
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>		
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="gate"></div>
-		<div class="gate"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
+		<!-- Row 1 -->
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div class="freedom red"></div></div>		
+		<div class="square"><div class="freedom red"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>		
 
-		<div class="fence"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="gate"></div></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-pig"></div></div>	
-		<div class="fence"></div>
+		<!-- Row 2 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="freedom red"></div></div>		
+		<div class="square"><div class="freedom red"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"><div class="blue-pig"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-hay-bale"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-hay-bale"></div></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="yellow-pig"></div></div>	
-		<div class="fence"></div>	
+		<!-- Row 3 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig green" id=1></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig green" id=2></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig green" id=3></div></div>	
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"><div tabindex=0 class="pig green" id=4></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig green" id=5></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig green" id=6></div></div>	
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>		
 
-		<div class="fence"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>			
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="fence"></div>
+		<!-- Row 4 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div tabindex=0 class="pig blue" id=7></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale green id=8"></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale green" id=9></div></div>
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig yellow" id=10></div></div>	
+		<div class="square"><div class="fence"></div></div>	
+		<div class="square"></div>		
 
-		<div class="fence"></div>
-		<div class="grid-cell"><div class="blue-pig"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-hay-bale"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-hay-bale"></div></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="yellow-pig"></div></div>	
-		<div class="fence"></div>	
+		<!-- Row 5 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>			
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>			
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="fence"></div>
+		<!-- Row 6 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div tabindex=0 class="pig blue" id=11></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale red" id=12></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale red" id=13></div></div>
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig yellow" id=14></div></div>	
+		<div class="square"><div class="fence"></div></div>	
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"><div class="blue-pig"></div></div>	
-		<div class="grid-cell"><div class="blue-hay-bale"></div></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="yellow-hay-bale"></div></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="blue-hay-bale"></div></div>
-		<div class="grid-cell"></div>			
-		<div class="grid-cell"><div class="yellow-hay-bale"></div></div>			
-		<div class="grid-cell"><div class="yellow-pig"></div></div>	
-		<div class="fence"></div>		
+		<!-- Row 7 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>			
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
 
-		<div class="gate"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="gate"></div>		
+		<!-- Row 8 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div tabindex=0 class="pig blue" id=15></div></div>	
+		<div class="square"><div tabindex=0 class="hay-bale blue" id=16></div></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale yellow" id=17></div></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale blue" id=18></div></div>
+		<div class="square"></div>			
+		<div class="square"><div tabindex=0 class="hay-bale yellow" id=19></div></div>			
+		<div class="square"><div tabindex=0 class="pig yellow" id=20></div></div>	
+		<div class="square"><div class="fence"></div></div>		
+		<div class="square"></div>
 
-		<div class="gate"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="gate"></div>			
+		<!-- Row 9 -->
+		<div class="square"><div class="freedom yellow"></div></div>		
+		<div class="square"><div class="square"><div class="freedom yellow"></div></div></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div class="freedom blue"></div></div>	
+		<div class="square"><div class="freedom blue"></div></div>
 
+		<!-- Row 10 -->
+		<div class="square"><div class="freedom yellow"></div></div>		
+		<div class="square"><div class="freedom yellow"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div class="freedom blue"></div></div>			
+		<div class="square"><div class="freedom blue"></div></div>
 
+		<!-- Row 11 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div tabindex=0 class="pig blue" id=21></div></div>	
+		<div class="square"><div tabindex=0 class="hay-bale blue" id=22></div></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale yellow" id=23></div></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale blue" id=24></div></div>
+		<div class="square"></div>			
+		<div class="square"><div tabindex=0 class="hay-bale yellow" id=25></div></div>			
+		<div class="square"><div tabindex=0 class="pig yellow" id=26></div></div>	
+		<div class="square"><div class="fence"></div></div>	
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"><div class="blue-pig"></div></div>	
-		<div class="grid-cell"><div class="blue-hay-bale"></div></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="yellow-hay-bale"></div></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="blue-hay-bale"></div></div>
-		<div class="grid-cell"></div>			
-		<div class="grid-cell"><div class="yellow-hay-bale"></div></div>			
-		<div class="grid-cell"><div class="yellow-pig"></div></div>	
-		<div class="fence"></div>	
+		<!-- Row 12 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>			
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"><div class="fence"></div></div>		
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>			
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="fence"></div>		
+		<!-- Row 13 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div tabindex=0 class="pig blue" id=27></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale green" id=28></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale green" id=29></div></div>
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig yellow" id=30></div></div>	
+		<div class="square"><div class="fence"></div></div>	
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"><div class="blue-pig"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-hay-bale"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="green-hay-bale"></div></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="yellow-pig"></div></div>	
-		<div class="fence"></div>	
+		<!-- Row 14 -->
+		<div class="square"></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>			
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>	
+		<div class="square"><div class="fence"></div></div>	
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>			
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>	
-		<div class="fence"></div>	
-		
-		<div class="fence"></div>
-		<div class="grid-cell"><div class="blue-pig"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-hay-bale"></div></div>	
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-hay-bale"></div></div>
-		<div class="grid-cell"></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="yellow-pig"></div></div>	
-		<div class="fence"></div>				
+		<!-- Row 15 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div tabindex=0 class="pig blue" id=31></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale red" id=32></div></div>	
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="hay-bale red" id=33></div></div>
+		<div class="square"></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig yellow" id=34></div></div>	
+		<div class="square"><div class="fence"></div></div>				
+		<div class="square"></div>
 
+		<!-- Row 16 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig red" id=35></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig red" id=36></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig red" id=37></div></div>	
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig red" id=38></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig red" id=39></div></div>	
+		<div class="square"></div>
+		<div class="square"><div tabindex=0 class="pig red" id=40></div></div>
+		<div class="square"></div>	
+		<div class="square"><div class="fence"></div></div>		
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-pig"></div></div>	
-		<div class="grid-cell"></div>
-		<div class="grid-cell"><div class="red-pig"></div></div>
-		<div class="grid-cell"></div>	
-		<div class="fence"></div>		
+		<!-- Row 17 -->
+		<div class="square"></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>		
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="freedom green"></div></div>
+		<div class="square"><div class="freedom green"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"><div class="fence"></div></div>
+		<div class="square"></div>
 
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>		
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="gate"></div>
-		<div class="gate"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-		<div class="fence"></div>
-
-								
+		<!-- Row 18	-->
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"><div class="freedom green"></div></div>
+		<div class="square"><div class="freedom green"></div></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
 
 	</div>
 
-	<!-- <script type="text/javascript" src="js/app2.js"></script> -->
+	<script type="text/javascript" src="js/app4.js"></script>
 </body>
 </html>
