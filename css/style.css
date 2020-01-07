@@ -3,19 +3,47 @@
   --grid-rows: 1;
 }
 
-#tempA {
-  height: 30px;
-  width: 30px;
-  background-color: red;
+
+
+#game {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+    /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  display: grid;
+  height: 660px;
+  width: 100%;
+  grid-template-rows:  100%;
+  grid-template-columns: 300px 660px 300px;
+  justify-content: center;
 }
 
-#tempB {
-  height: 100px;
-  width: 100px;
-  background-color: gray;
-  position: relative;
+.scoreboard {
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  text-align: center;
+}
 
-  top: 200px;
+button {
+  display: block;
+}
+
+#player1 {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+#player2 {
+  display: grid;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 1;
 }
 
 #game-board {
@@ -27,9 +55,13 @@
   display: grid;
   height: 660px;
   width: 660px;
-  grid-template-rows:  6% 1% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 1% 6%;
-  grid-template-columns: 6% 1% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 6% 1% 6%;
+  grid-template-rows:  6.125% 1% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 1% 6.125%;
+  grid-template-columns: 6.125% 1% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 1% 6.125%;
   justify-content: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
   /*transform: rotate(45deg);  */
 }
 
@@ -91,6 +123,34 @@
     blue 5px,
     LightSkyBlue  5px,
     LightSkyBlue  10px)
+}
+
+#blue-scoreboard-pig {
+  background-color: blue;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+}
+
+#red-scoreboard-pig {
+  background-color: red;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#yellow-scoreboard-pig {
+  background-color: #ffe44d;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
+}
+
+#green-scoreboard-pig {
+  background-color: green;
+  height: 80%;
+  width: 80%;
+  border-radius: 50%;
 }
 
 .blue.pig {

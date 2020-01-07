@@ -10,15 +10,9 @@ class Game {
 	constructor(){
 		this.board = this.indexBoard()
 		this.currentToken = 0
+		this.currentPlayer = 1
 	}
 
-	// set currentTarget(t){
-	// 	this.currentTarget = t
-	// }
-
-	// get currentTarget(){
-	// 	return this.currentTarget
-	// }
 
 	indexBoard(){
 		// debugger
@@ -326,10 +320,44 @@ class Game {
 	    temp.animate({'top': newPosition.top, 'left': newPosition.left}, 'fast', 'swing', function(){
 	       token.show();
 	       temp.remove();
-    });
+    	});
+	}	
+
+	rollDice(player){
+
+		let roll = Math.floor(Math.random() * 6) + 1  
+		$('#' + player).text('Moves: ' + roll)
+	}
+
+	togglePlayerFocus(){
+		if(this.currentPlayer === 1){
+			this.currentPlayer = 2
+				$('.green.pig').each(function () {$(this).attr('tabindex', 0)})
+				$('.green.hay-bale').each(function () {$(this).attr('tabindex', 0)})
+				$('.blue.pig').each(function () {$(this).attr('tabindex', 0)})
+				$('.blue.hay-bale').each(function () {$(this).attr('tabindex', 0)})
+
+				$('.red.pig').each(function () {$(this).removeAttr('tabindex')})
+				$('.red.hay-bale').each(function () {$(this).removeAttr('tabindex')})
+				$('.yellow.pig').each(function () {$(this).removeAttr('tabindex')})
+				$('.yellow.hay-bale').each(function () {$(this).removeAttr('tabindex')})				
+							
+
+		} else {
+			this.currentPlayer = 1
+				$('.red.pig').each(function () {$(this).attr('tabindex', 0)})
+				$('.red.hay-bale').each(function () {$(this).attr('tabindex', 0)})
+				$('.yellow.pig').each(function () {$(this).attr('tabindex', 0)})
+				$('.yellow.hay-bale').each(function () {$(this).attr('tabindex', 0)})
+
+				$('.green.pig').each(function () {$(this).removeAttr('tabindex')})
+				$('.green.hay-bale').each(function () {$(this).removeAttr('tabindex')})
+				$('.blue.pig').each(function () {$(this).removeAttr('tabindex')})
+				$('.blue.hay-bale').each(function () {$(this).removeAttr('tabindex')})	
+		}
+	}
 }
-	
-}
+
 
 let myGame = new Game
 myGame.indexBoard()
@@ -365,7 +393,6 @@ $(document).keydown(function(e){
 	// });
 
 	let t = "#" + myGame.currentToken
-	console.log('target is', t)
     switch (e.which){
     case 37:    //left arrow key
     	myGame.moveLeft(t)
@@ -388,5 +415,10 @@ $(document).keydown(function(e){
     }
 });
 
-
+// event listener for dice button
+$('#player1-roll').on('click', () => {
+  myGame.rollDice('player1-moves')
+})
+ 
+ 
 
