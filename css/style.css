@@ -3,58 +3,90 @@
   --grid-rows: 1;
 }
 
+body {
+  /*background-color: black;*/
+}
 
 
 #game {
+  /*border: solid thin gray;*/
   position: fixed;
   top: 50%;
   left: 50%;
     /* bring your own prefixes */
   transform: translate(-50%, -50%);
-  display: grid;
+  display: inline-flex;
   height: 660px;
-  width: 100%;
-  grid-template-rows:  100%;
-  grid-template-columns: 300px 660px 300px;
+  width: 600px;
+
   justify-content: center;
 }
 
-.scoreboard {
-  width: 100%;
-  height: 100%;
-  border: 1px solid gray;
+.scoreboard-left {
+  width: 20%;
+  height: 40px;
+  text-align: left;
+  border-right: solid thick gray;
+}
+
+h1 {
+  margin: 0;
+}
+
+#moves-display {
+  /*padding-left: 5px;*/
+  width: 30px;
+  height: 40px;
+  /*border: solid thin black;*/
   text-align: center;
+
+
+}
+
+.scoreboard-middle {
+  position: relative;
+  width: 60%;
+  height: 40px;
+  text-align: left;
+  /*border: solid thin gray;*/
+}
+
+.scoreboard-right {
+  width: 20%;
+  height: 40px;
+  text-align: right;
+  border-left: solid thick gray;
 }
 
 button {
   display: block;
 }
 
-#player1 {
+/*#player1 {
   display: grid;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 1;
-}
-
+}*/
+/*
 #player2 {
   display: grid;
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 1;
   grid-row-end: 1;
-}
+}*/
 
 #game-board {
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
     /* bring your own prefixes */
   transform: translate(-50%, -50%);
   display: grid;
-  height: 660px;
-  width: 660px;
+  height: 600px;
+  width: 600px;
   grid-template-rows:  6.125% 1% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 1% 6.125%;
   grid-template-columns: 6.125% 1% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 6.125% 1% 6.125%;
   justify-content: center;
@@ -67,6 +99,7 @@ button {
 
 
 .square {
+  position: relative;
   border: 1px solid gray;
   /*text-align: center;*/
   display: flex;
@@ -78,6 +111,34 @@ button {
 	background-color: green;
   height: 80%;
   width: 80%;
+  border-radius: 50%;
+}
+
+.red-circle {
+  border: solid thick rgba(255, 0, 0, .6);
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+}
+
+.yellow-circle {
+  border: solid thick rgba(255, 228, 77, .6);
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+}
+
+.green-circle {
+  border: solid thick rgba(0, 128, 0, 0.6);
+  height: 60%;
+  width: 60%;
+  border-radius: 50%;
+}
+
+.blue-circle {
+  border: solid thick rgba(0, 0, 255, 0.6);
+  height: 60%;
+  width: 60%;
   border-radius: 50%;
 }
 
@@ -185,17 +246,13 @@ button {
 }
 
 
-.empty {
 
-}
 
 .freedom {
-
+  /*transform: rotate(45deg); 
 }
 
-.beyond-fence {
-  border: 1px solid gray;
-}
+
 
 .score-area {
 

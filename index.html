@@ -11,11 +11,14 @@
 <body>
 	<div id = "game">
 
-		<div id = "player1" class = "scoreboard">
-			<!-- <div id = "red-scoreboard-pig"></div> -->
+		<div id = "player1" class = "scoreboard-left">
 			<h1>Player 1</h1>
-			<h3 id = "player1-moves">Moves: </h3>
-			<button id="player1-roll">Roll Dice</button>
+		</div>
+		<div class = "scoreboard-middle">
+			<div id = "moves-display"><h1>6</h1></div>
+		</div>
+		<div id = "player2" class = "scoreboard-right">
+			<h1>Player 2</h1>
 		</div>
 
 		<div id="game-board">
@@ -49,8 +52,8 @@
 			<div class="square" id="sq-24" data-sq="blocked" ><div class="fence"></div></div>
 			<div class="square" id="sq-25" data-sq="blocked" ><div class="fence"></div></div>
 			<div class="square" id="sq-26" data-sq="blocked" ><div class="fence"></div></div>
-			<div class="square" id="sq-27" data-sq="not-blocked"><div class="freedom red"></div></div>		
-			<div class="square" id="sq-28" data-sq="not-blocked" ><div class="freedom red"></div></div>
+			<div class="square" id="sq-27" data-sq="not-blocked"><div class="gate red"></div></div>		
+			<div class="square" id="sq-28" data-sq="not-blocked" ><div class="gate red"></div></div>
 			<div class="square" id="sq-29" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-30" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-31" data-sq="blocked"><div class="fence"></div></div>
@@ -61,7 +64,7 @@
 			<div class="square" id="sq-36" data-sq="not-blocked"></div>
 
 			<!-- Row 2 -->
-			<div class="square" id="sq-37" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-37" data-sq="not-blocked"><div class='red-circle'></div></div>		
 			<div class="square" id="sq-38" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-39" data-sq="not-blocked"></div>
 			<div class="square" id="sq-40" data-sq="blocked"><div class="pig green" id="p-1"></div></div>	
@@ -69,8 +72,8 @@
 			<div class="square" id="sq-42" data-sq="blocked"><div class="pig green" id="p-2"></div></div>	
 			<div class="square" id="sq-43" data-sq="not-blocked"></div>
 			<div class="square" id="sq-44" data-sq="blocked"><div class="pig green" id="p-3"></div></div>	
-			<div class="square" id="sq-45" data-sq="not-blocked"></div>
-			<div class="square" id="sq-46" data-sq="not-blocked"></div>	
+			<div class="square" id="sq-45" data-sq="not-blocked" style="border-left: solid red 7px"></div>
+			<div class="square" id="sq-46" data-sq="not-blocked" style="border-right: solid red 7px"></div>	
 			<div class="square" id="sq-47" data-sq="blocked"><div class="pig green" id="p-4"></div></div>	
 			<div class="square" id="sq-48" data-sq="not-blocked"></div>
 			<div class="square" id="sq-49" data-sq="blocked"><div class="pig green" id="p-5"></div></div>	
@@ -78,10 +81,10 @@
 			<div class="square" id="sq-51" data-sq="blocked"><div class="pig green" id="p-6"></div></div>	
 			<div class="square" id="sq-52" data-sq="not-blocked"></div>		
 			<div class="square" id="sq-53" data-sq="blocked"><div class="fence"></div></div>
-			<div class="square" id="sq-54" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-54" data-sq="not-blocked"><div class='blue-circle'></div></div>		
 
 			<!-- Row 3 -->
-			<div class="square" id="sq-55" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-55" data-sq="not-blocked"><div class='red-circle'></div></div>		
 			<div class="square" id="sq-56" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-57" data-sq="blocked"><div class="pig blue" id="p-7"></div></div>	
 			<div class="square" id="sq-58" data-sq="not-blocked"></div>	
@@ -98,10 +101,10 @@
 			<div class="square" id="sq-69" data-sq="not-blocked"></div>
 			<div class="square" id="sq-70" data-sq="blocked"><div class="pig yellow" id="p-8"></div></div>	
 			<div class="square" id="sq-71" data-sq="blocked"><div class="fence"></div></div>	
-			<div class="square" id="sq-72" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-72" data-sq="not-blocked"><div class='blue-circle'></div></div>		
 
 			<!-- Row 4 -->
-			<div class="square" id="sq-73" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-73" data-sq="not-blocked"><div class='red-circle'></div></div>		
 			<div class="square" id="sq-74" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-75" data-sq="not-blocked"></div>
 			<div class="square" id="sq-76" data-sq="not-blocked"></div>	
@@ -118,10 +121,10 @@
 			<div class="square" id="sq-87" data-sq="not-blocked"></div>
 			<div class="square" id="sq-88" data-sq="not-blocked"></div>	
 			<div class="square" id="sq-89" data-sq="blocked"><div class="fence"></div></div>
-			<div class="square" id="sq-90" data-sq="not-blocked"></div>
+			<div class="square" id="sq-90" data-sq="not-blocked"><div class='blue-circle'></div></div>
 
 			<!-- Row 5 -->
-			<div class="square" id="sq-91" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-91" data-sq="not-blocked"><div class='red-circle'></div></div>		
 			<div class="square" id="sq-92" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-93" data-sq="blocked"><div class="pig blue" id="p-9"></div></div>	
 			<div class="square" id="sq-94" data-sq="not-blocked"></div>	
@@ -138,10 +141,10 @@
 			<div class="square" id="sq-105" data-sq="not-blocked"></div>
 			<div class="square" id="sq-106" data-sq="blocked"><div class="pig yellow" id="p-10"></div></div>	
 			<div class="square" id="sq-107" data-sq="blocked"><div class="fence"></div></div>	
-			<div class="square" id="sq-108" data-sq="not-blocked"></div>
+			<div class="square" id="sq-108" data-sq="not-blocked"><div class='blue-circle'></div></div>
 
 			<!-- Row 6 -->
-			<div class="square" id="sq-109" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-109" data-sq="not-blocked"><div class='red-circle'></div></div>		
 			<div class="square" id="sq-110" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-111" data-sq="not-blocked"></div>
 			<div class="square" id="sq-112" data-sq="not-blocked"></div>	
@@ -158,10 +161,10 @@
 			<div class="square" id="sq-123" data-sq="not-blocked"></div>
 			<div class="square" id="sq-124" data-sq="not-blocked"></div>	
 			<div class="square" id="sq-125" data-sq="blocked"><div class="fence"></div></div>
-			<div class="square" id="sq-126" data-sq="not-blocked"></div>
+			<div class="square" id="sq-126" data-sq="not-blocked"><div class='blue-circle'></div></div>
 
 			<!-- Row 7 -->
-			<div class="square" id="sq-127" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-127" data-sq="not-blocked"><div class='red-circle'></div></div>		
 			<div class="square" id="sq-128" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-129" data-sq="blocked"><div class="pig blue" id="p-11"></div></div>	
 			<div class="square" id="sq-130" data-sq="blocked"><div class="hay-bale blue" id="hay-5"></div></div>
@@ -178,12 +181,12 @@
 			<div class="square" id="sq-141" data-sq="blocked"><div class="hay-bale yellow" id="hay-8"></div></div>			
 			<div class="square" id="sq-142" data-sq="blocked"><div class="pig yellow" id="p-12"></div></div>	
 			<div class="square" id="sq-143" data-sq="blocked"><div class="fence"></div></div>		
-			<div class="square" id="sq-144" data-sq="not-blocked"></div>
+			<div class="square" id="sq-144" data-sq="not-blocked"><div class='blue-circle'></div></div>
 
 			<!-- Row 8 -->
 			<div class="square" id="sq-145" data-sq="not-blocked"><div class="freedom yellow"></div></div>		
 			<div class="square" id="sq-146" data-sq="not-blocked"><div class="freedom yellow"></div></div>
-			<div class="square" id="sq-147" data-sq="not-blocked"></div>
+			<div class="square" id="sq-147" data-sq="not-blocked" style="border-top: solid #ffe44d 7px"></div>
 			<div class="square" id="sq-148" data-sq="not-blocked"></div>
 			<div class="square" id="sq-149" data-sq="not-blocked"></div>
 			<div class="square" id="sq-150" data-sq="not-blocked"></div>
@@ -196,14 +199,14 @@
 			<div class="square" id="sq-157" data-sq="not-blocked"></div>
 			<div class="square" id="sq-158" data-sq="not-blocked"></div>
 			<div class="square" id="sq-159" data-sq="not-blocked"></div>
-			<div class="square" id="sq-160" data-sq="not-blocked"></div>
+			<div class="square" id="sq-160" data-sq="not-blocked" style="border-top: solid blue 7px"></div>
 			<div class="square" id="sq-161" data-sq="not-blocked"><div class="freedom blue"></div></div>	
 			<div class="square" id="sq-162" data-sq="not-blocked"><div class="freedom blue"></div></div>
 
 			<!-- Row 9 -->
 			<div class="square" id="sq-163" data-sq="not-blocked"><div class="freedom yellow"></div></div>		
 			<div class="square" id="sq-164" data-sq="not-blocked"><div class="freedom yellow"></div></div>
-			<div class="square" id="sq-165" data-sq="not-blocked"></div>
+			<div class="square" id="sq-165" data-sq="not-blocked" style="border-bottom: solid #ffe44d 7px"></div>
 			<div class="square" id="sq-166" data-sq="not-blocked"></div>
 			<div class="square" id="sq-167" data-sq="not-blocked"></div>
 			<div class="square" id="sq-168" data-sq="not-blocked"></div>
@@ -216,12 +219,12 @@
 			<div class="square" id="sq-175" data-sq="not-blocked"></div>
 			<div class="square" id="sq-176" data-sq="not-blocked"></div>
 			<div class="square" id="sq-177" data-sq="not-blocked"></div>
-			<div class="square" id="sq-178" data-sq="not-blocked"></div>
+			<div class="square" id="sq-178" data-sq="not-blocked" style="border-bottom: solid blue 7px"></div>
 			<div class="square" id="sq-179" data-sq="not-blocked"><div class="freedom blue"></div></div>			
 			<div class="square" id="sq-180" data-sq="not-blocked"><div class="freedom blue"></div></div>
 
 			<!-- Row 10 -->
-			<div class="square" id="sq-181" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-181" data-sq="not-blocked"><div class='yellow-circle'></div></div>		
 			<div class="square" id="sq-182" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-183" data-sq="blocked"><div class="pig blue" id="p-13"></div></div>	
 			<div class="square" id="sq-184" data-sq="blocked"><div class="hay-bale blue" id="hay-9"></div></div>
@@ -238,10 +241,10 @@
 			<div class="square" id="sq-195" data-sq="blocked"><div class="hay-bale yellow" id="hay-12"></div></div>			
 			<div class="square" id="sq-196" data-sq="blocked"><div class="pig yellow" id="p-14"></div></div>	
 			<div class="square" id="sq-197" data-sq="blocked"><div class="fence"></div></div>	
-			<div class="square" id="sq-198" data-sq="not-blocked"></div>
+			<div class="square" id="sq-198" data-sq="not-blocked"><div class='green-circle'></div></div>
 
 			<!-- Row 11 -->
-			<div class="square" id="sq-199" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-199" data-sq="not-blocked"><div class='yellow-circle'></div></div>		
 			<div class="square" id="sq-200" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-201" data-sq="not-blocked"></div>
 			<div class="square" id="sq-202" data-sq="not-blocked"></div>	
@@ -258,10 +261,10 @@
 			<div class="square" id="sq-213" data-sq="not-blocked"></div>
 			<div class="square" id="sq-214" data-sq="not-blocked"></div>	
 			<div class="square" id="sq-215" data-sq="blocked"><div class="fence"></div></div>		
-			<div class="square" id="sq-216" data-sq="not-blocked"></div>
+			<div class="square" id="sq-216" data-sq="not-blocked"><div class='green-circle'></div></div>
 
 			<!-- Row 12 -->
-			<div class="square" id="sq-217" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-217" data-sq="not-blocked"><div class='yellow-circle'></div></div>		
 			<div class="square" id="sq-218" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-219" data-sq="blocked"><div class="pig blue" id="p-15"></div></div>	
 			<div class="square" id="sq-220" data-sq="not-blocked"></div>	
@@ -278,10 +281,10 @@
 			<div class="square" id="sq-231" data-sq="not-blocked"></div>
 			<div class="square" id="sq-232" data-sq="blocked"><div class="pig yellow" id="p-16"></div></div>	
 			<div class="square" id="sq-233" data-sq="blocked"><div class="fence"></div></div>	
-			<div class="square" id="sq-234" data-sq="not-blocked"></div>
+			<div class="square" id="sq-234" data-sq="not-blocked"><div class='green-circle'></div></div>
 
 			<!-- Row 13 -->
-			<div class="square" id="sq-235" data-sq="not-blocked"></div>
+			<div class="square" id="sq-235" data-sq="not-blocked"><div class='yellow-circle'></div></div>
 			<div class="square" id="sq-236" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-237" data-sq="not-blocked"></div>
 			<div class="square" id="sq-238" data-sq="not-blocked"></div>	
@@ -298,10 +301,10 @@
 			<div class="square" id="sq-249" data-sq="not-blocked"></div>
 			<div class="square" id="sq-250" data-sq="not-blocked"></div>	
 			<div class="square" id="sq-251" data-sq="blocked"><div class="fence"></div></div>	
-			<div class="square" id="sq-252" data-sq="not-blocked"></div>
+			<div class="square" id="sq-252" data-sq="not-blocked"><div class='green-circle'></div></div>
 
 			<!-- Row 14 -->
-			<div class="square" id="sq-253" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-253" data-sq="not-blocked"><div class='yellow-circle'></div></div>		
 			<div class="square" id="sq-254" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-255" data-sq="blocked"><div class="pig blue" id="p-17"></div></div>	
 			<div class="square" id="sq-256" data-sq="not-blocked"></div>	
@@ -318,10 +321,10 @@
 			<div class="square" id="sq-267" data-sq="not-blocked"></div>
 			<div class="square" id="sq-268" data-sq="blocked"><div class="pig yellow" id="p-18"></div></div>	
 			<div class="square" id="sq-269" data-sq="blocked"><div class="fence"></div></div>				
-			<div class="square" id="sq-270" data-sq="not-blocked"></div>
+			<div class="square" id="sq-270" data-sq="not-blocked"><div class='green-circle'></div></div>
 
 			<!-- Row 15 -->
-			<div class="square" id="sq-271" data-sq="not-blocked"></div>		
+			<div class="square" id="sq-271" data-sq="not-blocked"><div class='yellow-circle'></div></div>		
 			<div class="square" id="sq-272" data-sq="blocked"><div class="fence"></div></div>
 			<div class="square" id="sq-273" data-sq="not-blocked"></div>
 			<div class="square" id="sq-274" data-sq="blocked"><div class="pig red" id="p-19"></div></div>	
@@ -329,8 +332,8 @@
 			<div class="square" id="sq-276" data-sq="blocked"><div class="pig red" id="p-20"></div></div>	
 			<div class="square" id="sq-277" data-sq="not-blocked"></div>
 			<div class="square" id="sq-278" data-sq="blocked"><div class="pig red" id="p-21"></div></div>	
-			<div class="square" id="sq-279" data-sq="not-blocked"></div>
-			<div class="square" id="sq-280" data-sq="not-blocked"></div>
+			<div class="square" id="sq-279" data-sq="not-blocked" style="border-left: solid green 7px"></div>
+			<div class="square" id="sq-280" data-sq="not-blocked" style="border-right: solid green 7px"></div>
 			<div class="square" id="sq-281" data-sq="blocked"><div class="pig red" id="p-22"></div></div>	
 			<div class="square" id="sq-282" data-sq="not-blocked"></div>
 			<div class="square" id="sq-283" data-sq="blocked"><div class="pig red" id="p-23"></div></div>	
@@ -338,7 +341,7 @@
 			<div class="square" id="sq-285" data-sq="blocked"><div class="pig red" id="p-24"></div></div>
 			<div class="square" id="sq-286" data-sq="not-blocked"></div>	
 			<div class="square" id="sq-287" data-sq="blocked"><div class="fence"></div></div>		
-			<div class="square" id="sq-288" data-sq="not-blocked"></div>
+			<div class="square" id="sq-288" data-sq="not-blocked"><div class='green-circle'></div></div>
 
 			<!-- Row 16 -->
 			<div class="square" id="sq-289" data-sq="not-blocked"></div>		
@@ -382,7 +385,8 @@
 
 		</div>
 
-		<div id = "player2" class = "scoreboard"><h1>Player 2</h1></div>
+
+
 
 
 	</div>

@@ -306,7 +306,8 @@ class Game {
 	    // console.log('oldOffset', oldOffset)
 	    // console.log('old Position',element.position())
 	    token.appendTo(newParent);
-	    let newPosition = token.offset();
+	    // let newPosition = token.offset();
+	    let newPosition = token.position()
 
 	    let temp = token.clone().appendTo(oldParent);
 	    temp.css({
@@ -317,19 +318,38 @@ class Game {
 	    });
 	    // debugger
 	    token.hide();
-	    temp.animate({'top': newPosition.top, 'left': newPosition.left}, 'fast', 'swing', function(){
+	    temp.css('position', 'absolute')
+	    temp.parent().css('position', 'relative')
+	    // temp.animate({ 'top': newPosition.top, 'left': newPosition.left}, 5000, 'swing', function(){
+	    //    token.show();
+	    //    temp.remove();
+    	// });
+
+	    temp.animate({ 'marginLeft' : "+=50px"}, 1000, 'easeOutBounce', function(){
 	       token.show();
 	       temp.remove();
     	});
+
 	}	
 
-	rollDice(player){
+	shiftMovesDisplay(player){
+		if(player === 1){
+			$('#moves-display').animate({'marginLeft':"-=325px"}, 1000, 'easeOutBounce')	
+		} else if (player === 2){
+			$('#moves-display').animate({'marginLeft':"+=325px"}, 1000, 'easeOutBounce')	
+		}
 
-		let roll = Math.floor(Math.random() * 6) + 1  
-		$('#' + player).text('Moves: ' + roll)
+		this.rollDice()
 	}
 
-	togglePlayerFocus(){
+	rollDice(){
+
+		let roll = Math.floor(Math.random() * 6) + 1  
+		$('#moves-display>h1').text(roll)
+	}
+
+	togglePlayerFocus(){		
+
 		if(this.currentPlayer === 1){
 			this.currentPlayer = 2
 				$('.green.pig').each(function () {$(this).attr('tabindex', 0)})
@@ -340,8 +360,10 @@ class Game {
 				$('.red.pig').each(function () {$(this).removeAttr('tabindex')})
 				$('.red.hay-bale').each(function () {$(this).removeAttr('tabindex')})
 				$('.yellow.pig').each(function () {$(this).removeAttr('tabindex')})
-				$('.yellow.hay-bale').each(function () {$(this).removeAttr('tabindex')})				
-							
+				$('.yellow.hay-bale').each(function () {$(this).removeAttr('tabindex')})	
+
+				$('#player1-roll').prop('disabled', true);	
+				$('#player2-roll').prop('disabled', false);
 
 		} else {
 			this.currentPlayer = 1
@@ -353,8 +375,13 @@ class Game {
 				$('.green.pig').each(function () {$(this).removeAttr('tabindex')})
 				$('.green.hay-bale').each(function () {$(this).removeAttr('tabindex')})
 				$('.blue.pig').each(function () {$(this).removeAttr('tabindex')})
-				$('.blue.hay-bale').each(function () {$(this).removeAttr('tabindex')})	
+				$('.blue.hay-bale').each(function () {$(this).removeAttr('tabindex')})
+
+				$('#player1-roll').prop('disabled', false);	
+				$('#player2-roll').prop('disabled', true);	
 		}
+
+		this.shiftMovesDisplay(this.currentPlayer)	
 	}
 }
 
@@ -420,5 +447,7 @@ $('#player1-roll').on('click', () => {
   myGame.rollDice('player1-moves')
 })
  
- 
+$('#player2-roll').on('click', () => {
+  myGame.rollDice('player2-moves')
+}) 
 
