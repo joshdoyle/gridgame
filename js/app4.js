@@ -5,12 +5,19 @@ const BOARD_ROWS = 18
 const NOT_BLOCKED = 'not-blocked'
 const BLOCKED = 'blocked'
 const FREEDOM = 'freedom'
+const SQUARE_SIZE = 73.5//36.75
 
 class Game {
 	constructor(){
 		this.board = this.indexBoard()
 		this.currentToken = 0
 		this.currentPlayer = 1
+		this.numMoves = 0
+		this.togglePlayerFocus()
+		this.yellowScore = 0
+		this.blueScore = 0
+		this.redScore = 0
+		this.greenScore = 0
 	}
 
 
@@ -171,9 +178,9 @@ class Game {
 	// }
 	
 	moveUp(tokenId){
-		
 		// get tokens move limit
-		let tokenType = $(tokenId).attr('class').split(' ')[0]
+		let token = $(tokenId)
+		let tokenType = token.attr('class').split(' ')[0]
 		let moveLimited = false
 
 		if(tokenType === 'hay-bale'){
@@ -181,30 +188,20 @@ class Game {
 		} 
 		
 		// get parent of token
-		let originSquareId = $(tokenId).parent().attr("id")
+		let originSquareId = token.parent().attr("id")
 
 		let originSquare = this.findCurrentSquareLocation(originSquareId)
 		let destinationSquare = this.lookUp(originSquare, moveLimited)
 
-		let originId = '#' + originSquare.id
-		let destinationId = '#' + destinationSquare.id
-
-		this.moveToken(tokenId, destinationId, originId)
-		$(originId).attr('data-sq', NOT_BLOCKED)
-		$(destinationId).attr('data-sq', BLOCKED)
-
-		this.board[originSquare.row][originSquare.col].status = NOT_BLOCKED
-		this.board[destinationSquare.row][destinationSquare.col].status = BLOCKED
-
-		// this.indexBoard()
-		console.log('after move', this.board)
+		this.moveToken(token, destinationSquare, originSquare, 'up')
+		
 	}
 
 
 	moveDown(tokenId){
-		
 		// get tokens move limit
-		let tokenType = $(tokenId).attr('class').split(' ')[0]
+		let token = $(tokenId)
+		let tokenType = token.attr('class').split(' ')[0]
 		let moveLimited = false
 
 		if(tokenType === 'hay-bale'){
@@ -212,29 +209,20 @@ class Game {
 		} 
 		
 		// get parent of token
-		let originSquareId = $(tokenId).parent().attr("id")
+		let originSquareId = token.parent().attr("id")
 
 		let originSquare = this.findCurrentSquareLocation(originSquareId)
 		let destinationSquare = this.lookDown(originSquare, moveLimited)
 
-		let originId = '#' + originSquare.id
-		let destinationId = '#' + destinationSquare.id
-
-		this.moveToken(tokenId, destinationId, originId)
-		$(originId).attr('data-sq', NOT_BLOCKED)
-		$(destinationId).attr('data-sq', BLOCKED)
-
-		this.board[originSquare.row][originSquare.col].status = NOT_BLOCKED
-		this.board[destinationSquare.row][destinationSquare.col].status = BLOCKED
-
-		// this.indexBoard()
-		console.log('after move', this.board)
+		this.moveToken(token, destinationSquare, originSquare, 'down')
+		
 	}	
 
 	moveRight(tokenId){
 		
-		
-		let tokenType = $(tokenId).attr('class').split(' ')[0]
+		// get tokens move limit
+		let token = $(tokenId)
+		let tokenType = token.attr('class').split(' ')[0]
 		let moveLimited = false
 
 		if(tokenType === 'hay-bale'){
@@ -242,29 +230,20 @@ class Game {
 		} 
 		
 		// get parent of token
-		let originSquareId = $(tokenId).parent().attr("id")
+		let originSquareId = token.parent().attr("id")
 
 		let originSquare = this.findCurrentSquareLocation(originSquareId)
 		let destinationSquare = this.lookRight(originSquare, moveLimited)
 
-		let originId = '#' + originSquare.id
-		let destinationId = '#' + destinationSquare.id
-
-		this.moveToken(tokenId, destinationId, originId)
-		$(originId).attr('data-sq', NOT_BLOCKED)
-		$(destinationId).attr('data-sq', BLOCKED)
-
-		this.board[originSquare.row][originSquare.col].status = NOT_BLOCKED
-		this.board[destinationSquare.row][destinationSquare.col].status = BLOCKED
-
-		// this.indexBoard()
-		console.log('after move', this.board)
+		this.moveToken(token, destinationSquare, originSquare, 'right')
+		
 	}	
 
 	moveLeft(tokenId){
 		
 		// get tokens move limit
-		let tokenType = $(tokenId).attr('class').split(' ')[0]
+		let token = $(tokenId)
+		let tokenType = token.attr('class').split(' ')[0]
 		let moveLimited = false
 
 		if(tokenType === 'hay-bale'){
@@ -272,71 +251,173 @@ class Game {
 		} 
 		
 		// get parent of token
-		let originSquareId = $(tokenId).parent().attr("id")
+		let originSquareId = token.parent().attr("id")
 
 		let originSquare = this.findCurrentSquareLocation(originSquareId)
 		let destinationSquare = this.lookLeft(originSquare, moveLimited)
 
-		let originId = '#' + originSquare.id
-		let destinationId = '#' + destinationSquare.id
+		this.moveToken(token, destinationSquare, originSquare, "left")
 
-		this.moveToken(tokenId, destinationId, originId)
-		$(originId).attr('data-sq', NOT_BLOCKED)
-		$(destinationId).attr('data-sq', BLOCKED)
-
-		this.board[originSquare.row][originSquare.col].status = NOT_BLOCKED
-		this.board[destinationSquare.row][destinationSquare.col].status = BLOCKED
-
-		// this.indexBoard()
-		console.log('after move', this.board)
 	}	
 
 
 
-	moveToken(token, newParent, oldParent){
+	moveToken(token, destination, origin, direction){
 		
 	    //Allow passing in either a jQuery object or selector
+	    
+	    // token = $(token);
+	    // newParent= $(newParent);
+	    // oldParent = $(oldParent)
 	    // debugger
-	    token = $(token);
-	    newParent= $(newParent);
-	    oldParent = $(oldParent)
-	    // debugger
-	    let oldOffset = token.offset();
+	    // let oldOffset = token.offset();
 	    // let oldPosition = token.position()
 	    // console.log('oldOffset', oldOffset)
 	    // console.log('old Position',element.position())
-	    token.appendTo(newParent);
-	    // let newPosition = token.offset();
-	    let newPosition = token.position()
 
-	    let temp = token.clone().appendTo(oldParent);
-	    temp.css({
-	        // 'position': 'relative',
-	        // 'left': oldPosition.left,
-	        // 'top': oldPosition.top,
-	        // 'z-index': 1000
-	    });
-	    // debugger
-	    token.hide();
-	    temp.css('position', 'absolute')
-	    temp.parent().css('position', 'relative')
-	    // temp.animate({ 'top': newPosition.top, 'left': newPosition.left}, 5000, 'swing', function(){
+	   	let destinationId = "#" + destination.id
+	   	let originId = "#" + origin.id
+	  
+	   	let tokenRemoved = false
+	   	let distanceToTravel = ''
+
+	    this.numMoves--
+
+    	let temp = token.clone().appendTo(originId);
+	    token.hide()
+
+	    if(direction === 'up'){
+	    	distanceToTravel = Math.abs(destination.row - origin.row) * SQUARE_SIZE
+	    	console.log('distance',distanceToTravel)
+	    	temp.animate({'marginTop' : `-=${distanceToTravel}`}, 1000, 'easeOutBounce', function(){
+	    		token.show()
+	    		temp.remove()
+	    	})
+	    }
+
+	   	if(direction === 'down'){
+	    	distanceToTravel = Math.abs(destination.row - origin.row) * SQUARE_SIZE
+	    	console.log('distance',distanceToTravel)
+	    	temp.animate({'marginTop' : `+=${distanceToTravel}`}, 1000, 'easeOutBounce', function(){
+	    		token.show()
+	    		temp.remove()
+	    	})
+	    }
+
+	   	if(direction === 'left'){
+	    	distanceToTravel = Math.abs(destination.col - origin.col) * SQUARE_SIZE
+	    	console.log('distance',distanceToTravel)
+	    	temp.animate({'marginLeft' : `-=${distanceToTravel}`}, 1000, 'easeOutBounce', function(){
+	    		token.show()
+	    		temp.remove()
+	    	})
+	    }
+
+	   	if(direction === 'right'){
+	    	distanceToTravel = Math.abs(destination.col - origin.col) * SQUARE_SIZE
+	    	console.log('distance',distanceToTravel)
+	    	temp.animate({'marginLeft' : `+=${distanceToTravel}`}, 1000, 'easeOutBounce', function(){
+	    		token.show()
+	    		temp.remove()
+	    	})
+	    }		    	    
+
+
+
+	    if($(token).hasClass('green')){
+	    	if($(destinationId).children().hasClass('green')) {
+	    		// On score square
+	    		this.greenScore++
+	    		token.remove()
+	    		tokenRemoved = true
+	    		$(`#green-score-${this.greenScore}`).css({'background-color':'green'})
+	    	} else {
+	    		$(token).appendTo(destinationId);
+	    	}
+
+	    } else if($(token).hasClass('blue')){
+	    	if($(destinationId).children().hasClass('blue')) {
+	    		// On score square
+	    		this.blueScore++
+	    		token.remove()
+	    		tokenRemoved = true
+	    		$(`#blue-score-${this.blueScore}`).css({'background-color':'blue'})
+	    	} else {
+	    		$(token).appendTo(destinationId);
+	    	}	    	
+
+	    } else if($(token).hasClass('red')){	
+	    	if($(destinationId).children().hasClass('red')) {
+	    		// On score square
+	    		this.redScore++
+	    		token.remove()
+	    		tokenRemoved = true
+	    		$(`#red-score-${this.redScore}`).css({'background-color':'red'})
+	    	} else {
+	    		$(token).appendTo(destinationId);
+	    	}	    	
+
+	    } else if($(token).hasClass('yellow')){	
+	    	if($(destinationId).children().hasClass('yellow')) {
+	    		// On score square
+	    		this.yellowScore++
+	    		token.remove()
+	    		tokenRemoved = true
+	    		$(`#yellow-score-${this.yellowScore}`).css({'background-color':'#ffe44d'})
+	    	} else {
+	    		$(token).appendTo(destinationId);
+	    	}    	
+
+	    } else {
+	    	//nothing
+	    }
+
+		if(tokenRemoved){
+	    	$(origin).attr('data-sq', NOT_BLOCKED)
+			this.board[origin.row][origin.col].status = NOT_BLOCKED			
+		} else {
+			$(destination).attr('data-sq', BLOCKED)
+			this.board[destination.row][destination.col].status = BLOCKED
+			$(origin).attr('data-sq', NOT_BLOCKED)
+			this.board[origin.row][origin.col].status = NOT_BLOCKED	
+		}
+
+	  	if(this.numMoves === 0){
+	    	this.togglePlayerFocus()
+	    } else {
+	    	this.updateMovesDisplay()
+	    }
+
+	    console.log('origin is ', origin)
+	    console.log('dest is ', destination)
+
+	
+
+
+
+	    // let temp = token.clone().appendTo(oldParent);
+	    // token.hide();
+	    // // temp.animate({ 'top': newPosition.top, 'left': newPosition.left}, 5000, 'swing', function(){
+	    // //    token.show();
+	    // //    temp.remove();
+    	// // });
+
+	    // // temp.animate({ 'marginLeft' : "+=50px"}, 1000, 'easeOutBounce', function(){
 	    //    token.show();
 	    //    temp.remove();
     	// });
 
-	    temp.animate({ 'marginLeft' : "+=50px"}, 1000, 'easeOutBounce', function(){
-	       token.show();
-	       temp.remove();
-    	});
-
 	}	
+
+	updateMovesDisplay(){
+		$('#moves-display>h1').text(this.numMoves)
+	}
 
 	shiftMovesDisplay(player){
 		if(player === 1){
-			$('#moves-display').animate({'marginLeft':"-=325px"}, 1000, 'easeOutBounce')	
+			$('#moves-display').animate({'marginLeft':"-=190px"}, 1200, 'swing')	
 		} else if (player === 2){
-			$('#moves-display').animate({'marginLeft':"+=325px"}, 1000, 'easeOutBounce')	
+			$('#moves-display').animate({'marginLeft':"+=190px"}, 1200, 'swing')	
 		}
 
 		this.rollDice()
@@ -344,12 +425,12 @@ class Game {
 
 	rollDice(){
 
-		let roll = Math.floor(Math.random() * 6) + 1  
-		$('#moves-display>h1').text(roll)
+		this.numMoves = Math.floor(Math.random() * 6) + 1  
+		this.updateMovesDisplay()
 	}
 
 	togglePlayerFocus(){		
-
+		
 		if(this.currentPlayer === 1){
 			this.currentPlayer = 2
 				$('.green.pig').each(function () {$(this).attr('tabindex', 0)})
@@ -420,6 +501,7 @@ $(document).keydown(function(e){
 	// });
 
 	let t = "#" + myGame.currentToken
+
     switch (e.which){
     case 37:    //left arrow key
     	myGame.moveLeft(t)

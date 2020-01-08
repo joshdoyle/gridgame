@@ -4,7 +4,7 @@
 }
 
 body {
-  /*background-color: black;*/
+  background-color: ;
 }
 
 
@@ -23,14 +23,16 @@ body {
 }
 
 .scoreboard-left {
-  width: 20%;
+  width: 30%;
   height: 40px;
-  text-align: left;
+  text-align: right;
   border-right: solid thick gray;
+  padding-right: 1em;
 }
 
 h1 {
   margin: 0;
+  font-family: 'Orbitron', sans-serif;
 }
 
 #moves-display {
@@ -39,23 +41,47 @@ h1 {
   height: 40px;
   /*border: solid thin black;*/
   text-align: center;
+  background: #66ffd9;
+}
 
+.gate.red {
+  background: red;
+  width: 100%;
+  height: 100%;
+}
 
+.gate.blue {
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+}
+
+.gate.yellow {
+  background-color: #ffe44d;
+  width: 100%;
+  height: 100%;
+}
+
+.gate.green {
+  background-color: green;
+  width: 100%;
+  height: 100%;
 }
 
 .scoreboard-middle {
   position: relative;
-  width: 60%;
+  width: 40%;
   height: 40px;
-  text-align: left;
+  text-align: center;
   /*border: solid thin gray;*/
 }
 
 .scoreboard-right {
-  width: 20%;
+  width: 30%;
   height: 40px;
-  text-align: right;
+  text-align: left;
   border-left: solid thick gray;
+  padding-left: 1em;
 }
 
 button {
@@ -100,8 +126,8 @@ button {
 
 .square {
   position: relative;
-  border: 1px solid gray;
-  /*text-align: center;*/
+/*  border: solid .5px PaleTurquoise;
+*/  /*text-align: center;*/
   display: flex;
   justify-content:center;
   align-items: center;
@@ -143,47 +169,35 @@ button {
 }
 
 .green.hay-bale {
-  height: 80%;
-  width: 80%;
-  background: repeating-linear-gradient(
-    to right,
-    green,
-    green 5px,
-    LightGreen 5px,
-    LightGreen 10px)
+  height: 70%;
+  width: 70%;
+/*  background: green;
+  opacity: .4;*/
+  border: solid green thick;
 }
 
 .red.hay-bale {
-  height: 80%;
-  width: 80%;
-  background: repeating-linear-gradient(
-    to right,
-    red,
-    red 5px,
-    LightCoral 5px,
-    LightCoral 10px)
+  height: 70%;
+  width: 70%;
+/*  background: red;
+  opacity: .4;
+*/  border: solid red thick;
 }
 
 .yellow.hay-bale {
-  height: 80%;
-  width: 80%;
-  background: repeating-linear-gradient(
-    to right,
-    #ffe44d,
-    #ffe44d 5px,
-    GoldenRod 5px,
-    GoldenRod 10px)
+  height: 70%;
+  width: 70%;
+/*  background: #ffe44d;
+  opacity: .4;*/
+  border: solid #ffe44d thick;
 }
 
 .blue.hay-bale {
-  height: 80%;
-  width: 80%;
-  background: repeating-linear-gradient(
-    to right,
-    blue,
-    blue 5px,
-    LightSkyBlue  5px,
-    LightSkyBlue  10px)
+  height: 70%;
+  width: 70%;
+/*  background: blue;
+  opacity: .4;*/
+  border: solid blue thick;
 }
 
 #blue-scoreboard-pig {
@@ -236,22 +250,10 @@ button {
 }
 
 .fence {
-  background-color: brown;
+  background-color: lightgray;
   height: 100%;
   width: 100%;
 }
-
-.gate {
-
-}
-
-
-
-
-.freedom {
-  /*transform: rotate(45deg); 
-}
-
 
 
 .score-area {
