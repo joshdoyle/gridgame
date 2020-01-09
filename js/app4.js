@@ -307,7 +307,7 @@ class Game {
 	   	if(direction === 'right'){
 	    	distanceToTravel = Math.abs(destination.col - origin.col) * SQUARE_SIZE
 	    	console.log('distance',distanceToTravel)
-	    	temp.animate({'marginLeft' : `+=${distanceToTravel}`}, 10000, 'easeOutBounce', function(){
+	    	temp.animate({'marginLeft' : `+=${distanceToTravel}`}, 1000, 'easeOutBounce', function(){
 	    		token.show()
 	    		temp.remove()
 	    	})
