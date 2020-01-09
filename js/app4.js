@@ -265,15 +265,6 @@ class Game {
 	moveToken(token, destination, origin, direction){
 		
 	    //Allow passing in either a jQuery object or selector
-	    
-	    // token = $(token);
-	    // newParent= $(newParent);
-	    // oldParent = $(oldParent)
-	    // debugger
-	    // let oldOffset = token.offset();
-	    // let oldPosition = token.position()
-	    // console.log('oldOffset', oldOffset)
-	    // console.log('old Position',element.position())
 
 	   	let destinationId = "#" + destination.id
 	   	let originId = "#" + origin.id
@@ -316,7 +307,7 @@ class Game {
 	   	if(direction === 'right'){
 	    	distanceToTravel = Math.abs(destination.col - origin.col) * SQUARE_SIZE
 	    	console.log('distance',distanceToTravel)
-	    	temp.animate({'marginLeft' : `+=${distanceToTravel}`}, 1000, 'easeOutBounce', function(){
+	    	temp.animate({'marginLeft' : `+=${distanceToTravel}`}, 10000, 'easeOutBounce', function(){
 	    		token.show()
 	    		temp.remove()
 	    	})
@@ -387,25 +378,6 @@ class Game {
 	    } else {
 	    	this.updateMovesDisplay()
 	    }
-
-	    console.log('origin is ', origin)
-	    console.log('dest is ', destination)
-
-	
-
-
-
-	    // let temp = token.clone().appendTo(oldParent);
-	    // token.hide();
-	    // // temp.animate({ 'top': newPosition.top, 'left': newPosition.left}, 5000, 'swing', function(){
-	    // //    token.show();
-	    // //    temp.remove();
-    	// // });
-
-	    // // temp.animate({ 'marginLeft' : "+=50px"}, 1000, 'easeOutBounce', function(){
-	    //    token.show();
-	    //    temp.remove();
-    	// });
 
 	}	
 
@@ -494,11 +466,7 @@ $(".hay-bale").each(function () {
 })
 
 $(document).keydown(function(e){
-	// debugger
-	// $("#temp").animate({ "margin-left": "+=50px" }, "fast", () => {
-	// 	$('#temp').remove();
-	// 	$('<div id="temp"></div>').css('margin-left', '50px').prependTo($('body'))
-	// });
+
 
 	let t = "#" + myGame.currentToken
 
